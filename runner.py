@@ -80,6 +80,8 @@ def format_str(data: Any, ) -> str:
             result_str = "false"
     elif isinstance(data, str):
         result_str = '"' + data + '"'
+    elif isinstance(data, list):
+        result_str = "[" + (",".join(map(str, data))) + "]"
     else:
         result_str = str(data)
 
@@ -87,7 +89,7 @@ def format_str(data: Any, ) -> str:
         result_str = result_str[:100] + "..."
     return result_str
 
-class Tester:
+class Runner:
     def __init__(self, input_string: str, question_func: Callable):
         self.input_string = input_string
         self.question_func = question_func
@@ -113,5 +115,5 @@ class Tester:
             print("[Cost]", f"{(end_time - start_time) * 1000:.3f} ms")
             print("-" * 50)
             
-            results.append([result])
+            results.append(format_str(result))
         return results

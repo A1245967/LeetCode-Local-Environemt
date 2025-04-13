@@ -1,7 +1,7 @@
 from typing import *
 from solution import question
 from collections import *
-from tester import Tester
+from runner import Runner
 import sys
 
 sys.setrecursionlimit(2000)  # increase recursion limit for deep trees
@@ -11,5 +11,5 @@ if __name__ == "__main__":
         input_string = file.read()
 
         # Instantiate and run the Tester class
-        tester = Tester(input_string, question)
-        tester.run_tests()
+        runner = Runner(input_string, question)
+        runner.run_tests()
